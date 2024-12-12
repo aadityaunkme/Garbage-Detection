@@ -1,0 +1,64 @@
+{% load static  %}
+<link rel="stylesheet" href="{%static 'sign_up.css' %}">
+
+
+<div class="center1">
+	<div class="box" >
+		<form method="post" enctype="multipart/form-data">
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+		<div class="imgcontainer">
+			<img src="{%static '/images/logo.png' %}" alt="Avatar" class="avatar">
+		</div>
+		{% csrf_token %}
+		<div class="container">
+			<label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
+
+        <label for="address_line1">Address:</label>
+        <input type="text" id="address_line1" name="address_line1" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required><br>
+
+		<label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br>
+
+			<button type="submit">Register</button>
+			<label>
+		</div>
+
+		<div class="container" style="background-color:#f1f1f1">
+			<a href="{%url 'sign_in'%}"><button type="button" class="cancelbtn">Sign in</button></a>
+			<button type="reset" class="cancelbtn">Reset</button>
+		</div>
+			
+		</form>
+	</div>
+</div>

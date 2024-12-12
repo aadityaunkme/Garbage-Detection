@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>Report</h1>
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            {{ user.user.first_name }}
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            {{ user.user.last_name }}
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            {{ user.user.email }}
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            {{ user.phone }}
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            {{ user.address_line1 }}
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            {{ user.city }}
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            {{ user.state }}
+        </div>
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+           {{ user.pincode }}
+        </div>
+        <div class="form-group">
+            <label for="image-status">Validation Status</label>
+        {% if media.status %}
+            <span>Garbage Detected</span>
+            <form method="POST" action="{% url 'generate_pdf' %}">
+                {% csrf_token %}
+                <div class="dbutton">
+                    <button type="button" onclick="openDialog()">Register Complaint</button>
+                </div>
+                <div class="dialog-overlay" id="dialogOverlay"onclick="closeDialog(event)">
+                    <div class="dialog-box" onclick="event.stopPropagation()">
+                        <p>Complaint Registered!</p>
+                        <button type="submit" >Download Acknowledgement Letter</button>
+                    </div>
+                </div>
+            </form>
+        {% else %}
+            <span>Clean</span>
+        {% endif %}
+        </div>
+</div>
+<script>
+    // Function to open the dialog box
+    function openDialog() {
+        document.getElementById("dialogOverlay").style.display = "flex";
+    }
+
+    function closeDialog(event) {
+            const overlay = document.getElementById("dialogOverlay");
+            if (event.target === overlay) {
+                overlay.style.display = "none";
+            }
+    }
+
+</script>
+{% endblock %}

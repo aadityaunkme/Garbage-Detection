@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrashScan</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header, footer {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            background-image: url("{% static 'images/slogan2.jpg' %}");
+            background-size: 1650px 100px; /* Set width to 200px and height to 100px */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-position: center; /* Center the image in the header */
+            height: 100px; /* Set header height to match the image height */
+        }
+
+
+        header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+
+        header img {
+            height: 70px;
+            margin-right: 30px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #ddd;
+        }
+
+        .container {
+            flex-grow: 1;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .form-container {
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%; /* Responsive width */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .form-container button:hover {
+            background: #0056b3;
+        }
+
+        #imagePreviewContainer img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        #previewDiv {
+            width: 300px;
+            height: fit-content;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 5%;
+        }
+        #previewDiv img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between buttons */
+            padding: 10px 20px;
+            border-radius: 8px; /* Rounded corners */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling the Buttons */
+        nav button {
+            border: none;
+            background-color: #007bff; /* Blue button background */
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Smooth effects */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hover and Active Effects */
+        nav button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        nav button:active {
+            transform: scale(1); /* Reset zoom on click */
+        }
+
+        /* Styling Links Inside Buttons */
+        nav button a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color from button */
+            text-align: center; 
+            display: inline-block; 
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="{% static '/images/logo.png' %}" style="" alt="GovHelp Logo">
+        </div>
+    
+        <nav>
+            <button onclick="window.location.href='/profile/';">
+                    Profile
+            </button>
+            <button onclick="window.location.href='/logout/';">
+                    Log Out
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Upload Your Image</h1>
+        <div class="form-container">
+            <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="imageInput" class="custom-file-upload">
+                    Choose Image
+                </label>
+                <input type="file" id="imageInput" name="imageInput" accept="image/*">
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+
+            <!-- Show uploaded image if available -->
+            <h2></h2>
+            <div id="previewDiv">
+                <p>No image selected</p>
+            </div>
+        
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 TrashScan. All rights reserved.
+    </footer>
+</body>
+<script>
+    document.getElementById('imageInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const previewDiv = document.getElementById('previewDiv');
+        previewDiv.innerHTML = ''; // Clear existing content
+
+        if (file) {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            previewDiv.appendChild(img);
+        } else {
+            previewDiv.innerHTML = '<p>No image selected</p>';
+        }
+    });
+</script>
+</html>

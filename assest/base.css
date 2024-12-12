@@ -1,0 +1,97 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f9;
+}
+
+header .top-banner {
+  text-align: center;
+  background-color: #444;
+  color: white;
+  padding: 20px 10px;
+}
+
+header .top-banner h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+header .top-banner p {
+  margin: 5px 0 0;
+  font-size: 1.2em;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-item {
+  float: left;
+}
+
+.navbar-link {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-link:hover, .navbar-link.active {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-list {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-item {
+      float: none;
+      width: 100%;
+  }
+}

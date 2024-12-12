@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acknowledgement Letter</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1818aa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #f7f4f4;
+            padding: 5px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .image-container img {
+            width: 70px;  /* Set the width */
+            height: 40px; /* Set the height */
+        }
+        h1, h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .address, .salutation, .content, .closing {
+            margin-bottom: 0px;
+        }
+
+        .address p, .salutation p, .content p, .closing p {
+            margin: 0 0 0px;
+        }
+
+        .authority {
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .authority p {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .authority .stamp {
+            border: 1px solid #555;
+            padding: 20px;
+            margin-top: 0px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Title -->
+         <center><img src="C:\Users\synam\Desktop\Final_Project(5th Sem)\govhelp\static\images\logo.png" width="100" height="39"></center>
+        <h1>Acknowledgment Letter</h1>
+        <!-- Date -->
+        <div class="date"><b> December 3, 2024</b></div>
+
+        <!-- Sender's Address -->
+        <div class="address">
+            
+            <strong>From:</strong><br>
+            TrashScan Team<br>
+            Jamshedpur<br><br>
+            <p><strong>To:</strong><br>
+                {{ profile.first_name }} {{ profile.last_name }},<br>
+                Phone:{{ profile.phone }}<br>
+                {{ profile.address_line1 }},<br>
+                {{ profile.city }}, {{ profile.pincode }},<br>
+                {{ profile.state }}, India<br>
+            
+
+        <!-- Salutation -->
+        
+
+        <!-- Body Content -->
+            <p>
+                <b>Subject:</b> Acknowledgment of Your Complaint Registration<br><br>
+
+                <b>Dear {{profile.first_name}} {{profile.last_name}}</b>,<br><br>
+
+                Thank you for reaching out to us at TrashScan and bringing your concern to our attention. This is to confirm that your complaint regarding  has been successfully registered with the Municipal Corporation for further action.
+
+                We value your commitment to improving our community and assure you that your report will be addressed promptly. Our team will closely monitor the progress and keep you informed about any updates related to your complaint.
+
+                Should you have any additional details or concerns, please do not hesitate to contact us.
+
+                Thank you for using TrashScan and for being an active contributor to a cleaner and better environment.
+                <br>
+                <br>Warm regards,<br>
+                <b>Team TrashScan</b>
+            </p>
+
+        <!-- Closing -->
+
+        <!-- Authority Signature/Stamp -->
+        <div class="authority">
+            <p class="stamp">Authorized Signature/Stamp</p>
+        </div>
+    </div>
+</body>
+</html>

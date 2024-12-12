@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'base.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.ico.png' %}"
+    />
+    {% block head %}{% endblock %}
+    <title>{% block title %}TrashScan{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <!-- <div class="logo-container">
+                <img
+                  src="{% static '/images/logo.png' %}"
+                  style=""
+                  alt="GovHelp Logo"
+                />
+            </div> -->
+      <nav class="navbar" id="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a class="navbar-link active" href="{% url 'home' %}">Home</a>
+          </li>
+          <li >
+            <img src="{% static 'images/logo.png ' %}" alt="">
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="navbar-item">
+            <a class="navbar-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="navbar-item">
+            <a class="navbar-link" href="{% url 'sign_in' %}"
+              >Sign In/Register</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="content">{% block content %} {% endblock %}</section>
+    </main>
+
+    <footer>
+      <p class="footer-text">© TrashScan | All Rights Reserved</p>
+    </footer>
+  </body>
+</html>

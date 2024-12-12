@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'index.css' }">
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+{% endblock %}
+{% block content %}
+    <section class="user-section">
+        <h1>User Data</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Pincode</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.user_detail.address_line1 }}</td>
+                        <td>{{ user.user_detail.city }}</td>
+                        <td>{{ user.user_detail.state }}</td>
+                        <td>{{ user.user_detail.pincode }}</td>
+                        <td>{{ user.user_detail.phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="container">
+            <h1>Welcome to GovHelp</h1>
+            <p>Upload your image and click submit to proceed!</p>
+            <div class="form-container">
+                <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="imageInput" class="custom-file-upload">
+                        Choose Image
+                    </label>
+                    <input type="file" id="imageInput" name="imageInput" accept="image/*">
+                    <button type="submit" id="submitButton">Submit</button>
+                </form>
+                <div id="uploadingAnimation" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Uploading...</p>
+                </div>
+                <div id="resultMessage" class="hidden">Good</div>
+                <div id="imagePreviewContainer" class="hidden">
+                    <h2>Your Uploaded Image:</h2>
+                    <img id="imagePreview" src="" alt="Uploaded Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'form.js' %}"></script>
+{% endblock %}

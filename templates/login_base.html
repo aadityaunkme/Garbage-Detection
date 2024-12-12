@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico.png' %}">
+    {% block head %}{% endblock %}
+    <title>{% block title %}TrashScan{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="top-banner">
+            <h1>Welcome to TrashScan</h1>
+        </div>
+        <nav class="navbar" id="navbar">
+            
+        </nav>
+    </header>
+
+    <main>
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-text">© TrashScan | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

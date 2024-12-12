@@ -1,0 +1,112 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #23007b;
+  background-color: #f4f4f9;
+}
+
+header .top-banner {
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  padding: 20px 10px;
+}
+
+header .top-banner h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+header .top-banner p {
+  margin: 5px 0 0;
+  font-size: 1.2em;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #1d0e8a;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background-image: url("images/slogan2.jpg");
+}
+
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-item {
+  float: left;
+}
+
+.navbar-link {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-link:hover{
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+/* Footer Styles */
+footer {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+li {
+  margin: 0 10px; /* Adds spacing between list items */
+  display: inline-block; /* Ensures the element behaves like a block but remains inline */
+}
+
+/* Styling for the <img> element */
+li img {
+  width: 200px; /* Sets a fixed width */
+  height: auto; /* Ensures the image retains its aspect ratio */
+  display: block; /* Prevents unnecessary gaps below the image */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-list {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-item {
+      float: none;
+      width: 100%;
+  }
+
+}
